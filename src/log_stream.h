@@ -9,6 +9,8 @@ namespace logger {
 
 class LogStream {
  public:
+  typedef FixedBuffer<kSmallBuffer> Buffer;
+
   LogStream& operator<<(bool);
   LogStream& operator<<(short);
   LogStream& operator<<(unsigned short);
@@ -24,11 +26,11 @@ class LogStream {
   LogStream& operator<<(const char*);
   LogStream& operator<<(const std::string&);
   void append(const char* data, int len);
-  const FixedBuffer<kSmallBuffer>& buffer() const;
+  const Buffer& buffer() const;
   void resetBuffer();
 
  private:
-  //TODO
+  // TODO
   void staticCheck();
 
   template <typename T>
@@ -37,7 +39,7 @@ class LogStream {
   template <typename T>
   void formatDecimal(T);
 
-  FixedBuffer<kSmallBuffer> buffer_;
+  Buffer buffer_;
   static const int kMaxNumbericSize = 32;
 };
 

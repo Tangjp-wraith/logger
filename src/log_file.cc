@@ -21,6 +21,10 @@ bool LogFile::rollFile() {
   return false;
 }
 
+void LogFile::flush() {
+  file_->flush();
+}
+
 void LogFile::append_unlocked(const char *logline, int len) {
   file_->append(logline, len);
   ++count_;

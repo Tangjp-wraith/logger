@@ -4,9 +4,12 @@ project(logger)
 
 set(CXX_STANDARD_REQUIRED 17)
 
-set(LOGGER_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/src)
-
-add_executable(test ${LOGGER_INCLUDE_DIR} test.cc)
-
-
- 
+add_executable(test
+  src/async_logger.h src/async_logger.cc
+  src/file_util.h src/file_util.cc
+  src/fixed_buffer.h
+  src/log_file.h src/log_file.cc
+  src/log_stream.h src/log_stream.cc
+  src/logger.h src/logger.cc
+  test.cc
+)

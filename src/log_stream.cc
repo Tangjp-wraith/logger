@@ -4,6 +4,7 @@
 #include <cstddef>
 
 #include "fixed_buffer.h"
+#include "logger.h"
 
 namespace logger {
 
@@ -115,7 +116,7 @@ LogStream& LogStream::operator<<(const std::string& value) {
 
 void LogStream::append(const char* data, int len) { buffer_.append(data, len); }
 
-const FixedBuffer<kSmallBuffer>& LogStream::buffer() const { return buffer_; }
+const LogStream::Buffer& LogStream::buffer() const { return buffer_; }
 
 void LogStream::resetBuffer() { buffer_.reset(); }
 
